@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 var sale = new Schema({
+    "location": { type: [Number], index: '2dsphere' },
     "title": String,
     "location": {
         "lat": Number,
@@ -53,7 +54,7 @@ module.exports.registerUser = (newGS) => {
 module.exports.retrieveItem = function (item) {
     return new Promise((resolve, reject) => {
         event.find({
-            item: items.name
+            name: item
         })
             .exec()
             .then((data) => {
