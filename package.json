@@ -1,0 +1,25 @@
+{
+  "name": "hackgarage-server",
+  "version": "1.0.0",
+  "description": "server for hack garage",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lassondy/HackGarage.git"
+  },
+  "author": "cdot team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lassondy/HackGarage/issues"
+  },
+  "homepage": "https://github.com/lassondy/HackGarage#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  }
+}
