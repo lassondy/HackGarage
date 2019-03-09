@@ -1,0 +1,82 @@
+.btn {
+
+
+    /* link -> special state of the selector (visited should be the same as link) */
+    &,
+    &:link,
+    &:visited {
+        background-color: transparent;
+        padding:  1rem 3rem;
+        display: inline-block;
+        position: relative;
+
+        // text styling
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: $default-font-size;
+        color: $color-secondary-dark;
+        font-weight: 200;
+        letter-spacing: 0.2rem;
+
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all .2s ease-out;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2); /* x y blur color */
+    }
+
+    &:hover:enabled {
+        box-shadow: 0 0.6rem 1rem rgba($color-black,.2); /* x y blur color */
+        color: $color-secondary;
+
+        // arrow turning into a vertical line
+        &::before {
+            height: 80%;
+
+            // clear transparent borders
+            border-top: none;
+            border-bottom: none;
+            border-left: 0.2rem solid $color-secondary;
+        }
+
+        // background hover effects
+        &::after {
+            @include bgEffectHover;
+        }
+    }
+
+    &:disabled {
+        color: rgba($color-secondary-dark, 0.6);
+    }
+
+    // expanding arrow (hover effect)
+    &::before {
+        content: "";
+
+        position: absolute; 
+        top: 50%; 
+        left: 1rem;
+        transform: translateY(-50%);
+        
+        // collapse height to form a triangle
+        width: 0; 
+        height: 0; 
+        
+        // 2 transparent borders form an arrow
+        border-top: 0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        transition: all .2s ease-out;
+
+        // left-to-right arrow >
+        border-left: 0.5rem solid $color-secondary-dark;
+    }
+
+    // growing background (hover effect)
+    &::after {
+        @include bgEffect;
+    }
+}

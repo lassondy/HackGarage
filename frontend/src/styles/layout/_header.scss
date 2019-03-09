@@ -1,0 +1,26 @@
+.header {
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+
+  &--top {
+    margin-bottom: 6rem;
+    animation: fadeIn .8s ease-in;
+
+    .heading-primary--main {
+      animation: none;
+    }
+
+    .heading-primary--sub {
+      animation: none;
+    }
+  }
+
+  &--centered {
+    @include absCenter;
+  }
+}

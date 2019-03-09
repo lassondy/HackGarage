@@ -1,0 +1,19 @@
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.8;
+  overflow: hidden;
+
+  &__content {
+    height: 100vh;
+    width: 100%;
+    // occupy the entire space while maintaining the aspect-ratio
+    // similar to background size - cover
+    object-fit: cover;
+    animation: videoChange 29s forwards;
+  }
+}

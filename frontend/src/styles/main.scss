@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato'), local('Lato'),
+        url('../fonts/Lato-Regular.ttf') format('truetype'), 
+  }
+  
+$font-family: 'Lato';
+
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/bg-video";
+@import "components/button";
+@import "components/form";
+@import "components/text-box";
+
+@import "layout/navigation";
+@import "layout/header";
+@import "layout/main";
+@import "layout/footer";
