@@ -1,14 +1,13 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
-var userSchema = new Schema({
+var sale = new Schema({
     "title": String,
     "location": {
         "lat": Number,
         "long": Number
     },
     "duration": {
-        "date": Date,
         "startTime": Number,
         "endTime": Number
     },
@@ -31,17 +30,17 @@ module.exports.initialize = function () {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            event = db.model("users", userSchema);
+            event = db.model("sales", sale);
             resolve();
         });
     });
 };
 
-module.exports.registerUser = (userData) => {
+module.exports.registerUser = (newGS) => {
     return new Promise((resolve, reject) => {
-        console.log(userData);
-        let newUser = new User(userData);
-        newUser.save((error) => {
+        console.log(newGS);
+        let newSale = new User(newGS);
+        newSale.save((error) => {
             if (error && error.code != 11000) {
                 reject("There was an error creating the user: " + error);
             }
@@ -58,16 +57,11 @@ module.exports.retrieveItem = function (item) {
         })
             .exec()
             .then((data) => {
-                if (data.length === 0) {
-                    reject("Couldn't find item " + item);
-                }
-                else {
-                    console.log("Ok, I found the item");
-                    resolve(data)
-                }
+                console.log("Ok, I found the item");
+                resolve(data)
             })
             .catch(() => {
-                reject("Unable to find user: " + userData.userName);
+                reject("Unable to find item: " + item);
             })
     })
 };
