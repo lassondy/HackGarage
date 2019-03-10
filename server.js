@@ -26,14 +26,14 @@ server.get('/', (req, res, next) => {
 
 // create a new Sale item
 server.post('/sale', (req, res, next) => {
-
-    const sampleData = JSON.parse(data);
-
-    sampleData.forEach(element => {
+    console.log('in POST /sale');
+    data.data.forEach(element => {
         const sale = new Sale(element);
+        console.log(sale);
         database.registerUser(sale);
     });
-
+    res.status(200);
+    next();
 });
 
 //get  sale by id
@@ -44,7 +44,10 @@ server.get('sale/:id', (req,res,next) => {
 
 
 // error handler
-server.use((err,req,res,next)=> res.status(err.status).json(err));
+server.use((err,req,res,next)=>  {
+    console.log(err);
+    res.status(err.status).json(err)
+});
 
 
 database.initialize().then(()=>{
