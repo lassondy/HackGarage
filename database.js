@@ -88,10 +88,10 @@ module.exports.retrieveInRadius = (lng, lat, rad) => {
                 type: 'Point'
             },
             maxDistance: rad
+        }).then((data) => {
+            resolve(data);
+        }).catch(() => {
+            console.log("bullshit");;
         });
-    }).then((data) => {
-        resolve(data);
-    }).catch(() => {
-        console.log("bullshit");
-    })
+    });
 };
