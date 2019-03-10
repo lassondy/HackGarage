@@ -88,6 +88,6 @@ module.exports.retrieveInRadius = (lng, lat, rad) => {
                 type: 'Point'
             },
             maxDistance: rad
-        }));
+        });
     })
 };
