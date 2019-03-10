@@ -36,7 +36,7 @@ var Sale = new Schema({
 
 let event;
 
-module.exports.initialize = function () {
+module.exports.initialize = () => {
     return new Promise(function (resolve, reject) {
         let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage",
             { useNewUrlParser: true });
@@ -64,7 +64,7 @@ module.exports.registerUser = (newGS) => {
     })
 };
 
-module.exports.retrieveItem = function (item) {
+module.exports.retrieveItem = (item) => {
     return new Promise((resolve, reject) => {
         event.find({
             name: item
