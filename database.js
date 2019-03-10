@@ -14,7 +14,7 @@ var geoSchema = new Schema({
 var Sale = new Schema({
     /*"location": {
         "type": geoSchema,
-        "indexe": "2dsphere"
+        "index": "2dsphere"
     },*/
     "title": String,
     "address": String,
