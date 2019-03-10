@@ -27,7 +27,8 @@ server.get('/', (req, res, next) => {
 // create a new Sale item
 server.post('/sale', (req, res, next) => {
     console.log('in POST /sale');
-    data.data.forEach(element => {
+    console.log(data);
+    data.forEach((element) => {
         const sale = new Sale(element);
         console.log(sale);
         database.registerUser(sale);
