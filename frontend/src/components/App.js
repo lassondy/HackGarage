@@ -44,11 +44,15 @@ const data = [
 class App extends React.Component {
 
   state = {
-    selectedSaleItem: 0
+    selectedSaleItem: -1
   }
 
   setSaleItem = (idx) => {
     this.setState({ selectedSaleItem: idx});
+  }
+
+  deselectItem = () => {
+    this.setState({ selectedSaleItem: -1});
   }
 
   render() {
@@ -64,9 +68,13 @@ class App extends React.Component {
           </Router>
           <Map google={this.props.google} data={data} onMarkerClick={this.setSaleItem}/>
         </div>
-        <SaleDetails
-          details={data[this.state.selectedSaleItem]}
-        />
+        {this.state.selectedSaleItem !== -1 &&
+          <SaleDetails
+            details={data[this.state.selectedSaleItem]}
+            deselectItem={this.deselectItem}
+          />
+        }
+
       </div>
     );
   }
