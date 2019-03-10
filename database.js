@@ -1,18 +1,29 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
+var geoSchema = new Schema({
+    type: {
+        type: String,
+        default: 'Point'
+    },
+    coordinates: {
+        type: [Number]
+    }
+});
+
 var Sale = new Schema({
-    //"location": { type: [Number], index: '2dsphere' },
+    /*"location": {
+        "type": geoSchema,
+        "indexe": "2dsphere"
+    },*/
     "title": String,
     "address": String,
     "location": {
         "lat": Number,
         "long": Number
     },
-    "duration": {
-        "startTime": Number,
-        "endTime": Number
-    },
+    "startTime": Number,
+    "endTime": Number,
     "description": String,
     "items": [
         {
@@ -28,7 +39,7 @@ let event;
 module.exports.initialize = function () {
     return new Promise(function (resolve, reject) {
         let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage",
-                                            { useNewUrlParser: true });
+            { useNewUrlParser: true });
         db.on('error', (err) => {
             reject(err); // reject the promise with the provided error
         });
