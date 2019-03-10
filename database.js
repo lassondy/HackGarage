@@ -1,7 +1,7 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
-var geoSchema = new Schema({
+const Schema = mongoose.Schema;
+let geoSchema = new Schema({
     type: {
         type: String,
         default: 'Point'
@@ -11,27 +11,28 @@ var geoSchema = new Schema({
     }
 });
 
-var Sale = new Schema({
-    /*"location": {
+const Sale = new Schema({
+    "geolocation": {
         "type": geoSchema,
         "index": "2dsphere"
-    },*/
+    },
+    "id": mongoose.Schema.Types.ObjectId,
     "title": String,
     "address": String,
     "location": {
-        "lat": Number,
-        "long": Number
+        "latitude": Number,
+        "longitude": Number
     },
-    "startTime": Number,
-    "endTime": Number,
+    "start": Date,
+    "end": Date,
     "description": String,
-    "items": [
+    /*"items": [
         {
             "name": String,
             "price": Number,
             "description": String
         }
-    ]
+    ]*/
 });
 
 let Event;
@@ -44,6 +45,7 @@ module.exports.initialize = () => {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
+            console.log("I'm here");
             Event = db.model("Sales", Sale);
             resolve();
         });
@@ -52,7 +54,6 @@ module.exports.initialize = () => {
 
 module.exports.registerUser = (newGS) => {
     return new Promise((resolve, reject) => {
-        console.log(newGS);
         let newSale = new Event(newGS);
         newSale.save((error) => {
             if (error && error.code != 11000) {
