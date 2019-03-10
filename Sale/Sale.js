@@ -7,7 +7,7 @@ const { InvalidData } = require('../error');
 class Sale {
     
     constructor(data) {
-        if(!StaticRange.validateData(data)) throw new InvalidData('The data provided is invalid or malformed');
+        if(!Sale.validateData(data)) throw new InvalidData('The data provided is invalid or malformed');
         this.id = uuidv1(); 
         this.title = data.title;
         this.location = data.location;
@@ -18,7 +18,7 @@ class Sale {
 
     // validates client provided data, returns true if all data valid
     static validateData(data) {
-        const validated = true;
+        let validated = true;
 
         // object containing valid properties and their type
         const validProperties = {
