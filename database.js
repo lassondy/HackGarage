@@ -33,7 +33,7 @@ module.exports.initialize = function () {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            event = db.model("sales", Sale);
+            event = db.model("Sales", Sale);
             resolve();
         });
     });
@@ -42,7 +42,7 @@ module.exports.initialize = function () {
 module.exports.registerUser = (newGS) => {
     return new Promise((resolve, reject) => {
         console.log(newGS);
-        let newSale = new Sale(newGS);
+        let newSale = new event(newGS);
         newSale.save((error) => {
             if (error && error.code != 11000) {
                 reject("There was an error creating the user: " + error);
