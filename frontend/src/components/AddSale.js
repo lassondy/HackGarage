@@ -18,28 +18,57 @@ class AddSale extends React.Component {
     event.preventDefault();
     this.setState({ btnDisabled: true });
 
-    let { endDate, startDate } = { ...this.state };
+    let { endDate, startDate, startTime, endTime } = { ...this.state };
+
+    if (!endDate || !startDate) {
+      this.setState({ btnDisabled: false });
+      alert('Must provide start and end date!');
+      return;
+    }
     
-    startDate.setTIme(this.state.startTime);
-    endDate.setTime(this.state.endTime);
+    let startTimeArr = startTime.split(':');
+    let endTimeArr = endTime.split(':');
+
+    startDate.set({hours: startTimeArr[0], minutes: startTimeArr[1]});
+    startDate = startDate.toDate();
+
+    endDate.set({hours: endTimeArr[0], minutes: endTimeArr[1]});
+    endDate = endDate.toDate();
 
     let data = {
       title: this.state.title,
       description: this.state.description,
       location: {},
-      startDate: "",
-      endDate: "",
+      startDate: startDate,
+      endDate: endDate,
     };
     
-    
     const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({'address': this.state.location}, function(results, status) {
+    geocoder.geocode({'address': this.state.location}, (results, status) => {
       if (status === 'OK') {
-        data[location] = results[0].geometry.location;
+        data['location'] = results[0].geometry.location;
+        console.log(results[0].geometry.location)
         console.log(data);
+
+        
+        fetch('https://httpbin.org/post', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        }).then(function(res){ return res.json(); })
+        .then(function(respDate) { 
+          console.log( JSON.stringify( respDate )); 
+        });
+        
+    
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
+
+      this.setState({ btnDisabled: false });
     });
   }
 
@@ -118,7 +147,13 @@ class AddSale extends React.Component {
               </div>
 
               <div className="form__group">
-                  <textarea type="description" className="form__input" placeholder="Sale Description" id="description" required/>>
+                  <textarea type="description" 
+                    className="form__input" 
+                    placeholder="Sale Description" 
+                    id="description" 
+                    onChange={this.handleChange}
+                    name="description"
+                    required/>
                   <label htmlFor="description" className="form__label">Sale Description</label>
               </div>
 
