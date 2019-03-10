@@ -6,7 +6,15 @@
 
     &__group--inline {
         display: flex;
+        div {
+            width: 30%;
+        }
+        input[type=time] {
+            width: 90%;
+        }
     }
+
+
 
     &__input {
         font-size: 1.5rem;

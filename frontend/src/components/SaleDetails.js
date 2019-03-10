@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export class SaleDetails extends React.Component {
 
 
@@ -9,13 +8,15 @@ export class SaleDetails extends React.Component {
 
     const { details } = this.props;
 
-    return (
+    return (      
       <div className={"sale-details"}>
+        <div>
           <h3 className="heading-tertiary u-margin-bottom-small">{details.title}</h3>
           <p className="paragraph">
             {details.description}
           </p>
-      </div>
+        </div>
+      </div>   
     );
   }
 }

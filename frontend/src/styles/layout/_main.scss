@@ -22,11 +22,13 @@
     padding: 2rem 3rem;
     position: absolute;
     box-shadow: 0 1rem 2rem rgba($color-black, .1);
-
+    & > * {
+        animation: fadeIn 1s;
+    }
     right: 10%;
     bottom: 10%;
-    width: 70rem;
-    height: 10rem;
+    width: 50rem;
+    min-height: 10rem;
     z-index: 200;
     background-color: white;
 }

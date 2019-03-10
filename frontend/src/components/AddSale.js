@@ -17,11 +17,26 @@ class AddSale extends React.Component {
   saveSale = (event) => {
     event.preventDefault();
     this.setState({ btnDisabled: true });
+
+    let { endDate, startDate } = { ...this.state };
+    
+    startDate.setTIme(this.state.startTime);
+    endDate.setTime(this.state.endTime);
+
+    let data = {
+      title: this.state.title,
+      description: this.state.description,
+      location: {},
+      startDate: "",
+      endDate: "",
+    };
+    
     
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({'address': this.state.location}, function(results, status) {
       if (status === 'OK') {
-        alert(JSON.stringify(results[0].geometry.location));
+        data[location] = results[0].geometry.location;
+        console.log(data);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -53,26 +68,28 @@ class AddSale extends React.Component {
                 />
               </div>
               <div className="form__group form__group--inline">
-                <div>
+                <div className="form__inline-item">
                   <input 
                     onChange={this.handleChange}
                     type="time" 
                     className="form__input"
-                    name="time"
+                    name="startTime"
+                    id="startTime"
                     required
                   />
-                  <label htmlFor="time" className="form__label">Start Time</label>
+                  <label htmlFor="startTime" className="form__label">Start Time</label>
                 </div>
-                <div>
+                <div className="form__inline-item">
 
                   <input 
                     onChange={this.handleChange}
                     type="time" 
                     className="form__input"
-                    name="time"
+                    name="endTime"
+                    id="endTime"
                     required
                   />
-                  <label htmlFor="time" className="form__label">End Time</label>
+                  <label htmlFor="endTime" className="form__label">End Time</label>
                 </div>
               </div>
               <div className="form__group">
