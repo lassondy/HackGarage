@@ -16,15 +16,14 @@ const Sale = new Schema({
         "type": geoSchema,
         "index": "2dsphere"
     },
-    "id": mongoose.Schema.Types.ObjectId,
     "title": String,
     "address": String,
-    "location": {
+    /*"location": {
         "latitude": Number,
         "longitude": Number
-    },
-    "start": Date,
-    "end": Date,
+    },*/
+    "startDate": Date,
+    "endDate": Date,
     "description": String,
     /*"items": [
         {
@@ -81,13 +80,14 @@ module.exports.retrieveItem = (item) => {
     })
 };
 
-/*module.exports.retrieveClosest = (item, location) =>{
-    return new Promise((resolve, reject) =>{
-        retrieveItem(item)
-            .then((data){
-
-
-            })
+module.exports.retrieveInRadius = (lng, lat, rad) => {
+    return new Promise((resolve, reject) => {
+        Event.find().where(('geolocation').near({
+            center: {
+                coordinates: [lng, lat],
+                type: 'Point'
+            },
+            maxDistance: rad
+        }));
     })
-    locationsWithItem = retrieveItem(item)
-};*/
+};
