@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 21.674536 25.69192"
+   height="97.103317"
+   width="81.91951">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-94.162731,-135.65403)"
+     id="layer1">
+    <g
+       transform="matrix(1.0043518,0,0,1.0043518,92.947777,136.44778)"
+       id="g829"
+       style="fill:#ffffff;fill-opacity:1;stroke:#0b3c5d;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.97826089">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#0b3c5d;stroke-opacity:0.97826089"
+         d="m 21,10 c 0,7 -9,13 -9,13 0,0 -9,-6 -9,-13 a 9,9 0 0 1 18,0 z"
+         id="path815" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:#0b3c5d;stroke-opacity:0.97826089"
+         cx="12"
+         cy="10"
+         r="3"
+         id="circle817" />
+    </g>
+    <rect
+       ry="9.9122171e-06"
+       y="138.2995"
+       x="97.251984"
+       height="15.496027"
+       width="15.496027"
+       id="rect842"
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#0b3c5d;stroke-width:1.1458416;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <g
+       transform="matrix(0.5164303,0,0,0.56119834,98.802836,139.30925)"
+       id="g839"
+       style="fill:none;stroke:#d9b310;stroke-width:2.83082795;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         style="stroke:#d9b310;stroke-width:2.83082795;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 3,9 9,-7 9,7 v 11 a 2,2 0 0 1 -2,2 H 5 A 2,2 0 0 1 3,20 Z"
+         id="path825" />
+      <polyline
+         style="stroke:#d9b310;stroke-width:2.83082795;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         points="9 22 9 12 15 12 15 22"
+         id="polyline827" />
+    </g>
+  </g>
+</svg>

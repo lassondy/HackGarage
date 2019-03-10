@@ -66,7 +66,12 @@ class App extends React.Component {
             <Contact path="contact"/> */}
             <AddSale path="add"/>
           </Router>
-          <Map google={this.props.google} data={data} onMarkerClick={this.setSaleItem}/>
+          <Map 
+            google={this.props.google} 
+            data={data} 
+            onMarkerClick={this.setSaleItem}
+            selectedSaleItem={this.state.selectedSaleItem}
+          />
         </div>
         {this.state.selectedSaleItem !== -1 &&
           <SaleDetails

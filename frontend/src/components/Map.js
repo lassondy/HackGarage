@@ -5,30 +5,32 @@ import CurrentLocation from './CurrentLocation';
 
 export class MapContainer extends React.Component {
 
-  state = {
-    activeMarker: {},          //Shows the active marker upon click
-    selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
-  };
-
-  onMarkerClick = (marker) =>
-    this.setState({
-      selectedMarker: marker
-    });
 
 
   render() {
+
+    const { data, onMarkerClick, google, selectedSaleItem } = this.props;
+    let markerIcons = [];
+
+    data.forEach((saleDetails, idx) => {
+      if (idx == selectedSaleItem) {
+        markerIcons.push('/images/selectedpin.svg');
+      } else {
+        markerIcons.push('/images/pin.svg');
+      }
+    });
 
     return (
       <div className={"map"}>
       <CurrentLocation
         centerAroundCurrentLocation
-        google={this.props.google}
+        google={google}
       >
-        {this.props.data.map((sale, idx) => 
+        {data.map((sale, idx) => 
           (<Marker 
               key={sale._id}
-              options={{ icon: '/images/pin.svg' }}
-              onClick={() => this.props.onMarkerClick(idx)}
+              options={{ icon: markerIcons[idx] }}
+              onClick={() => onMarkerClick(idx)}
               position={{ lat: sale.location.latitude, lng: sale.location.longitude }}
           />)
         )}

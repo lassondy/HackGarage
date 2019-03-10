@@ -11,6 +11,8 @@ import 'normalize.css';
 import './styles/main.scss';
 import sprite from './images/sprite.svg';
 import pin from './images/pin.svg'
+import pinSelected from './images/selectedpin.svg'
+
 import house from './images/house.svg'
 
 import 'react-dates/initialize';
