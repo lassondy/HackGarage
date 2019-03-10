@@ -40,7 +40,7 @@ class AddSale extends React.Component {
       title: this.state.title,
       description: this.state.description,
       address: this.state.location,
-      location: {},
+      geolocation: {},
       startDate: startDate,
       endDate: endDate,
     };
@@ -48,8 +48,10 @@ class AddSale extends React.Component {
     const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode({'address': this.state.location}, (results, status) => {
       if (status === 'OK') {
-        data['location'] = results[0].geometry.location;
-        console.log(results[0].geometry.location)
+        data['geolocation'] = {
+          "coordinates": [results[0].geometry.location.lng(), results[0].geometry.location.lat()],
+        };
+        // console.log(results[0].geometry.location)
         console.log(JSON.stringify(data));
 
         

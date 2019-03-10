@@ -16,11 +16,12 @@ const data = [
   {
     _id: "01",
     title: "Marks Garage Sale",
-    description: "I am going give away some old boxing stuff, lorem ipsum drugs",
+    description: "Sit nostrud anim mollit ex do. Anim duis et deserunt eu non. In qui sint fugiat ex tempor. Non quis aliqua minim exercitation cillum excepteur nostrud. Amet dolor ullamco ipsum ea tempor enim non irure. Sit fugiat minim voluptate ipsum labore et voluptate enim. Deserunt excepteur minim amet eiusmod",
     location: {
       latitude: 43.773620,
       longitude: -79.492140
     },
+    address: "206 Pond Road bla bla",
     endDate: "2019-03-12T02:20:55.923Z",
     startDate: "2019-03-10T02:22:55.923Z",
   },
@@ -33,6 +34,7 @@ const data = [
       latitude: 43.784200,
       longitude: -79.412840
     },
+    address: "206 Pond Road bla bla",
     endDate: "2019-03-15T02:20:55.923Z",
     startDate: "2019-03-10T02:22:55.923Z",
   }
