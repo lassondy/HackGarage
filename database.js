@@ -32,7 +32,7 @@ module.exports.initialize = function () {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            event = db.model("sales", sale);
+            event = db.model("Sale", sale);
             resolve();
         });
     });
