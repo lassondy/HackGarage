@@ -34,7 +34,7 @@ var Sale = new Schema({
     ]
 });
 
-let event;
+let Event;
 
 module.exports.initialize = () => {
     return new Promise((resolve, reject) => {
@@ -44,7 +44,7 @@ module.exports.initialize = () => {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            event = db.model("Sales", Sale);
+            Event = db.model("Sales", Sale);
             resolve();
         });
     });
@@ -53,7 +53,7 @@ module.exports.initialize = () => {
 module.exports.registerUser = (newGS) => {
     return new Promise((resolve, reject) => {
         console.log(newGS);
-        let newSale = new event(newGS);
+        let newSale = new Event(newGS);
         newSale.save((error) => {
             if (error && error.code != 11000) {
                 reject("There was an error creating the user: " + error);
@@ -66,7 +66,7 @@ module.exports.registerUser = (newGS) => {
 
 module.exports.retrieveItem = (item) => {
     return new Promise((resolve, reject) => {
-        event.find({
+        Event.find({
             name: item
         })
             .exec()
@@ -79,3 +79,14 @@ module.exports.retrieveItem = (item) => {
             })
     })
 };
+
+/*module.exports.retrieveClosest = (item, location) =>{
+    return new Promise((resolve, reject) =>{
+        retrieveItem(item)
+            .then((data){
+
+
+            })
+    })
+    locationsWithItem = retrieveItem(item)
+};*/
