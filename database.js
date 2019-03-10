@@ -37,7 +37,7 @@ var Sale = new Schema({
 let event;
 
 module.exports.initialize = () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
         let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage",
             { useNewUrlParser: true });
         db.on('error', (err) => {
