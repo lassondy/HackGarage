@@ -21,7 +21,8 @@ export class SaleDetails extends React.Component {
           <span className="sale-details__address">Address: </span> {details.address}
           <br/>
           <span className="sale-details__time u-margin-bottom-small">
-            {moment(details.startDate).format('MMMM Do YYYY, h:mm:ss a')} - 
+            {moment(details.startDate).format('MMMM Do YYYY, h:mm:ss a')}
+            &mdash;
             {moment(details.endDate).format('MMMM Do YYYY, h:mm:ss a')}
           </span>
           <br/>
