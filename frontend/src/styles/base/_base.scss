@@ -31,7 +31,6 @@ html {
 /* Everything related to font should be specified in the body */
 body {
   box-sizing: border-box;
-  padding: 2rem 15rem;
   background-color: $color-primary-dark;
 
   @include respond(tab-port) {

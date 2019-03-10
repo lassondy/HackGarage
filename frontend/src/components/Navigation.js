@@ -5,16 +5,20 @@ import { Link } from "@reach/router";
 const Navigation = () => {
   
   const navItems = [
-    {title: 'About', path: 'about'},
+    {title: 'Filter', path: 'filter', icon: 'icon-filter'},
+    {title: 'Add Sale', path: 'add', icon: 'icon-calendar-plus-o'},
   ];
 
   return (
     <nav className="sidebar">
       <ul className="side-nav">
         {navItems.map((item) => (
-          <li className="side-nav__item" key={item.path}>
+          <li className="side-nav__item" key={item.path}>          
             <Link to={item.path} className="side-nav__link">
-              {item.title}
+              <svg className="side-nav__icon">
+                  <use xlinkHref={`/images/sprite.svg#${item.icon}`}></use>
+              </svg>
+              <span>{item.title}</span>
             </Link>
           </li>
         ))}

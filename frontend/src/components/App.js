@@ -1,28 +1,34 @@
-import React, { Fragment } from 'react';
-// import { Router } from "@reach/router";
+import React from 'react';
+import { Router } from "@reach/router";
+import { GoogleApiWrapper } from 'google-maps-react';
 
 // shared
-import Header from './Header';
 import Map from './Map';
+import Navigation from './Navigation';
 
 // content
 // import About from './About';
 // import Experience from './Experience';
-// import Contact from './Contact';
+import AddSale from './AddSale';
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <Header/>
-        {/* <Router> */}
+      <div className="app-container">
+        <Navigation/>
+        <Router>
           {/* <About path="about"/>
           <Experience path="experience"/>
           <Contact path="contact"/> */}
-        {/* </Router> */}
-        <Map/>
-      </Fragment>
+          <AddSale path="add"/>
+        </Router>
+        <Map google={this.props.google}/>
+      </div>
     );
   }
 }
+
+export default GoogleApiWrapper({
+  apiKey: process.env.MAP_API_KEY,
+})(App);
