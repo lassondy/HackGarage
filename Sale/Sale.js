@@ -1,7 +1,7 @@
 
 const validator = require('validator');
 const uuidv1 = require('uuid/v1');
-const { InvalidData } = require('./error');
+const { InvalidData } = require('../error');
 
 
 class Sale {
@@ -13,6 +13,7 @@ class Sale {
         this.location = data.location;
         this.duration = data.duration;
         this.description = data.description;
+        this.address = data.address;
     }
 
     // validates client provided data, returns true if all data valid
@@ -24,7 +25,8 @@ class Sale {
             title: 'String',
             location: 'string',
             saleDate: 'Object',
-            description: 'String'
+            description: 'String',
+            address: 'String',
         }
         
 

@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const uuidv1 = require('uuid/v1');
 const database = require('./database');
+const Sale = require('./Sale/Sale');
+
+const data = require('./data/sample.json');
 
 const server = express();
 const HTTP_PORT = process.env.PORT || 3000;
@@ -16,7 +19,7 @@ function onHTTPStart() {
 
 // CREATE route 
 
-// root endpointc
+// root endpoint
 server.get('/', (req, res, next) => {
 
 });
@@ -24,7 +27,21 @@ server.get('/', (req, res, next) => {
 // create a new Sale item
 server.post('/sale', (req, res, next) => {
 
+    const sampleData = JSON.parse(data);
+
+    sampleData.forEach(element => {
+        const sale = new Sale(element);
+        database.registerUser(sale);
+    });
+
 });
+
+//get  sale by id
+server.get('sale/:id', (req,res,next) => {
+
+});
+
+
 
 // error handler
 server.use((err,req,res,next)=> res.status(err.status).json(err));
