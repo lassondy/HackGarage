@@ -14,7 +14,7 @@ var geoSchema = new Schema({
 var Sale = new Schema({
     /*"location": {
         "type": geoSchema,
-        "indexe": "2dsphere"
+        "index": "2dsphere"
     },*/
     "title": String,
     "address": String,
@@ -36,8 +36,8 @@ var Sale = new Schema({
 
 let event;
 
-module.exports.initialize = function () {
-    return new Promise(function (resolve, reject) {
+module.exports.initialize = () => {
+    return new Promise((resolve, reject) => {
         let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage",
             { useNewUrlParser: true });
         db.on('error', (err) => {
@@ -64,7 +64,7 @@ module.exports.registerUser = (newGS) => {
     })
 };
 
-module.exports.retrieveItem = function (item) {
+module.exports.retrieveItem = (item) => {
     return new Promise((resolve, reject) => {
         event.find({
             name: item
