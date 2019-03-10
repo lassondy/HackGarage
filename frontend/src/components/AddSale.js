@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "@reach/router";
 import { DateRangePicker } from 'react-dates';
+import {  navigate } from "@reach/router"
 
 class AddSale extends React.Component {
 
@@ -38,6 +39,7 @@ class AddSale extends React.Component {
     let data = {
       title: this.state.title,
       description: this.state.description,
+      address: this.state.location,
       location: {},
       startDate: startDate,
       endDate: endDate,
@@ -48,7 +50,7 @@ class AddSale extends React.Component {
       if (status === 'OK') {
         data['location'] = results[0].geometry.location;
         console.log(results[0].geometry.location)
-        console.log(data);
+        console.log(JSON.stringify(data));
 
         
         fetch('https://httpbin.org/post', {
@@ -59,8 +61,9 @@ class AddSale extends React.Component {
           },
           body: JSON.stringify(data)
         }).then(function(res){ return res.json(); })
-        .then(function(respDate) { 
+        .then(function(respDate) {
           console.log( JSON.stringify( respDate )); 
+          navigate('/');
         });
         
     
