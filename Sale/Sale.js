@@ -32,13 +32,12 @@ class Sale {
         
 
         // check if parameter is a object
-        // if( !data || data.constructor !== 'Object' ) {
-        //     validated = false;
-        //     throw new InvalidData('The data provided is invalid or malformed');
-        // }
+        if( !data || data.constructor !== Object ) {
+            validated = false;
+            throw new InvalidData('The data provided is invalid or malformed');
+        }
 
         // check if object has correct number of properties and type
-
         if (Object.keys(data).length !== Object.keys(validProperties).length) validated = false;
 
         Object.keys(data).forEach((property) =>{
@@ -48,11 +47,11 @@ class Sale {
             }            
         });        
 
-        // ensure location object has only two properties, lat and 
+        // ensure location object has only two properties, latitude and longitude 
         validated = Object.keys(data.location).length === 2 ? validated : false;
         if(!validated) throw new InvalidData('The data provided is invalid or malformed');
 
-
+        if(data.location.constructor !== Object) validated = false;
         Object.keys(data.location).forEach((key)=>{
             if (key !== 'latitude' && key != 'longitude') {
                 validated = false;
