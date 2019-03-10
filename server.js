@@ -28,7 +28,6 @@ server.get('/', (req, res, next) => {
 server.post('/sale', (req, res, next) => {
     data.forEach((element) => {
         const sale = new Sale(element);
-        console.log(sale);
         database.registerUser(sale);
     });
     res.status(200);
