@@ -1,9 +1,10 @@
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
-var sale = new Schema({
-    "location": { type: [Number], index: '2dsphere' },
+var Sale = new Schema({
+    //"location": { type: [Number], index: '2dsphere' },
     "title": String,
+    "address": String,
     "location": {
         "lat": Number,
         "long": Number
@@ -12,7 +13,7 @@ var sale = new Schema({
         "startTime": Number,
         "endTime": Number
     },
-    "garageDescription": String,
+    "description": String,
     "items": [
         {
             "name": String,
@@ -40,7 +41,7 @@ module.exports.initialize = function () {
 module.exports.registerUser = (newGS) => {
     return new Promise((resolve, reject) => {
         console.log(newGS);
-        let newSale = new User(newGS);
+        let newSale = new Sale(newGS);
         newSale.save((error) => {
             if (error && error.code != 11000) {
                 reject("There was an error creating the user: " + error);
