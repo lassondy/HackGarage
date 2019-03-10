@@ -22,43 +22,55 @@ class Sale {
 
         // object containing valid properties and their type
         const validProperties = {
+            start: 'String',
+            end: 'String',
             title: 'String',
-            location: 'string',
-            saleDate: 'Object',
             description: 'String',
             address: 'String',
+            location: 'Object'
         }
         
 
         // check if parameter is a object
-        if( !data || data.constructor !== 'Object' ) {
-            validated = false;
-        }
+        // if( !data || data.constructor !== 'Object' ) {
+        //     validated = false;
+        //     throw new InvalidData('The data provided is invalid or malformed');
+        // }
 
         // check if object has correct number of properties and type
-        if (Object.keys(data).length !== validProperties.length) validated = false;
+
+        if (Object.keys(data).length !== Object.keys(validProperties).length) validated = false;
 
         Object.keys(data).forEach((property) =>{
-            if (!validProperties.hasOwnProperty(property)
-            || data[property] !== this.validProperties[property].constructor
-            ) validated = false;            
+            if (!validProperties.hasOwnProperty(property)) {
+                validated = false;
+                throw new InvalidData('The data provided is invalid or malformed');
+            }            
         });        
 
-        // ensure location object has only two properties, lat and long
+        // ensure location object has only two properties, lat and 
         validated = Object.keys(data.location).length === 2 ? validated : false;
+        if(!validated) throw new InvalidData('The data provided is invalid or malformed');
+
 
         Object.keys(data.location).forEach((key)=>{
-            if (key !== 'lat' || key != 'long') validated = false;
+            if (key !== 'latitude' && key != 'longitude') {
+                validated = false;
+                throw new InvalidData('The data provided is invalid or malformed');
+            }
         });
 
-        const reg = new RegExp("^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}");
+        const reg = new RegExp("^-?([1-8]?[1-9]|[1-9]0)\.{1}\\d{0,9}");
 
         // validate latitude and longitude parameters
-        if (validated && (!reg.exec(data.location.lat) || !reg.exec(data.location.long))) valid = false;
+        console.log(data.location.longitude);
+        console.log(reg.exec(data.location.longitude));
+        if (!reg.exec(data.location.latitude) || !reg.exec(data.location.longitude)) throw new InvalidData('The data provided is invalid or malformed');
+
 
         //TODO: date validation
 
-        if (!validator.isAlphanumeric(data.description)) validated = false;
+       // if (!validator.isAlphanumeric(data.description)) throw new InvalidData('The data p`rovided is invalid or malformed');
 
         // const latLong = data.location.lat + ", " + data.location.long; // verify property names of lat long in JSON object
         // const validLocation = validator.isLatLong(latLong) ? latLong : null; // validate location string
