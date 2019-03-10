@@ -82,7 +82,7 @@ module.exports.retrieveItem = (item) => {
 
 module.exports.retrieveInRadius = (lng, lat, rad) => {
     return new Promise((resolve, reject) => {
-        Event.find().where(('geolocation').near({
+        Event.find().where('geolocation').near({
             center: {
                 coordinates: [lng, lat],
                 type: 'Point'
