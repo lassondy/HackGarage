@@ -27,12 +27,13 @@ let event;
 
 module.exports.initialize = function () {
     return new Promise(function (resolve, reject) {
-        let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage");
+        let db = mongoose.createConnection("mongodb://hackGS:hackGS1@ds255784.mlab.com:55784/hackgarage",
+                                            { useNewUrlParser: true });
         db.on('error', (err) => {
             reject(err); // reject the promise with the provided error
         });
         db.once('open', () => {
-            event = db.model("Sale", sale);
+            event = db.model("sales", Sale);
             resolve();
         });
     });
