@@ -10,32 +10,8 @@ const mapStyles = {
 };
 
 
-// const data = [
-//   {
-//     title: "",
-//     description: "",
-//     location: {
-//       latitude: 0,
-//       longitude: 0
-//     },
-//     endDate: "",
-//     startDate: "",
-//   },
-//   {
-//     title: "",
-//     description: "",
-//     location: {
-//       latitude: 0,
-//       longitude: 0
-//     },
-//     endDate: "",
-//     startDate: "",
-//   }
 
-// ];
-
-
-export class CurrentLocation extends React.Component {
+class CurrentLocation extends React.Component {
 
   constructor(props) {
     super(props);

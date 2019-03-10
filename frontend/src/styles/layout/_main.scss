@@ -1,4 +1,5 @@
-.app-container {
+
+.content {
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,10 +9,27 @@
 
 }
 
+
 .sidebar {
   width: 10%;
 }
 
+.app-container {
+    // position: relative;
+}
+
+.sale-details {
+    padding: 2rem 3rem;
+    position: absolute;
+    box-shadow: 0 1rem 2rem rgba($color-black, .1);
+
+    right: 10%;
+    bottom: 10%;
+    width: 70rem;
+    height: 10rem;
+    z-index: 200;
+    background-color: white;
+}
 
 
 .popup {
