@@ -89,5 +89,9 @@ module.exports.retrieveInRadius = (lng, lat, rad) => {
             },
             maxDistance: rad
         });
+    }).then((data) => {
+        resolve(data);
+    }).catch(() => {
+        console.log("bullshit");
     })
 };
