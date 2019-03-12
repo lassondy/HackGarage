@@ -80,7 +80,7 @@ module.exports.retrieveItem = (item) => {
     })
 };
 
-module.exports.retrieveInRadius = (lng, lat, rad) => {
+module.exports.retrieveInRadius = (lng, lat, rad = 5000) => {
     return new Promise((resolve, reject) => {
         Event.find().where('geolocation').near({
             center: {
@@ -91,7 +91,8 @@ module.exports.retrieveInRadius = (lng, lat, rad) => {
         }).then((data) => {
             resolve(data);
         }).catch(() => {
-            console.log("bullshit");;
+            console.log("bullshit");
+            reject("error finding elements in radius");
         });
     });
 };
